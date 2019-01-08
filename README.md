@@ -7,8 +7,7 @@
 
 -----------------
 
-
-##目录
+## 目录
 1. [vps 服务商](#vps-服务商)
 2. [部署shadowsocks](#部署)
 3. [如何使用](#使用)
@@ -19,8 +18,6 @@
   5. [手机端翻墙](#手机端翻墙)
 4. [代理服务器的加速优化](#加速优化)
 5. [其他翻墙方法总结](#其他翻墙方法总结)
-
-####  根据经验，最好不要给翻墙服务器绑定域名，我没法确定是不是因为绑定了域名导致服务器丢包严重，但是我绑定过域名的翻墙服务器都出现过丢包严重的情况。
 
 ## vps 服务商
 
@@ -67,7 +64,8 @@
     - 宽带给的特别足
     - 可以设置启动脚本，一键搭建翻墙服务器
   - 缺点：不管你信不信，反正我是没有买到好用的vps，试过开几十台服务器，一台一台测试速度，最后还是放弃了。
-  - 推荐链接还是不放了，从没打算常用linode
+  - 推荐链接还是不放了，从没打算常用linode 
+  - （2017年1月21日更新：Tokyo 2区的机器网络不错，然后推荐链接是 https://www.linode.com/?r=a7f3625c3d98069bd1d7f86a843db68b7751e998 😅）
   
 #### 写在vps服务商后面的话
 
@@ -106,7 +104,7 @@ chmod +x shadowsocks-libev.sh
 ./shadowsocks-libev.sh 2>&1 | tee shadowsocks-libev.log
 ```
 
-Debian下libev版安装脚本
+Debian或Ubuntu下libev版安装脚本
 ```bash
 wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-libev-debian.sh
 chmod +x shadowsocks-libev-debian.sh
@@ -115,22 +113,26 @@ chmod +x shadowsocks-libev-debian.sh
 
 #### 手动安装（喜欢折腾可以参考下面的链接）
 
-shadowsocks最后一个release还可以访问
-https://github.com/shadowsocks/shadowsocks/tree/7c08101ce8a673fafb22477e8ad720aa57114a1f
+shadowsocks 源代码可以通过切换分支的方式访问:
 
-官方repo的wiki已经不能访问，这是fork别人保存下来的wiki，手动安装或者优化可以参考
-https://github.com/MofeLee/shadowsocks-wiki
+https://github.com/shadowsocks/shadowsocks/tree/master
+
+wiki:
+
+https://github.com/shadowsocks/shadowsocks/wiki
 
 ## 使用
 
 #### OSX下的shadowsocks客户端
 
-OSX客户端地址(可以在teambition上的"文件库>程序"里找到，文件名是ShadowsocksX-2.6.3.dmg)：
-https://github.com/shadowsocks/shadowsocks-iOS/releases
+OSX客户端地址：
+[shadowsocks-iOS](https://github.com/shadowsocks/shadowsocks-iOS/releases)
+或
+[ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG)
 
 #### 浏览器使用
 
-Chrome下使用SwitchyOmega,推荐先找个临时翻墙服务器，从Chrome官方扩展中心安装，
+Chrome下使用[SwitchyOmega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif),推荐先找个临时翻墙服务器，从Chrome官方扩展中心安装，
 
 **代理配置**：
 
@@ -191,6 +193,8 @@ mac下brew安装需要拷贝到`/usr/local/etc`目录下。
 
 **映射为http代理**
 
+注：ShadowsocksX-NG 已经映射过http代理，无需polipo
+
 1. 安装polipo
 
   ```bash 
@@ -233,7 +237,7 @@ alias xni='proxychains4 -q npm install '
 
 **查看使用的是哪台服务器的网络**
 
-```curl ifconfig.co```
+```curl iiip.co``` （我自己搭建的服务，ifconfig.co已经无法在国内直接访问了）
 
 #### windows下命令行下使用 >> [proxifier](https://www.proxifier.com/)
 具体使用可以搜索google或者baidu。
@@ -260,4 +264,4 @@ http://www.serverspeeder.com/
 - vpn翻墙：购买或搭建vpn服务器，有可能被gfw屏蔽流量；
 - Lantern：据说挺不错的翻墙工具，只能用来浏览网页。
 
-## 如有疑问可以发issue，有必要讲的更清楚的信息我会及时更新到repo上~点右上角的watch可以收到更新~
+## 如有疑问可以发issue，有必要讲的更清楚的信息我会及时更新到repo上~ 点右上角的watch可以收到更新~
